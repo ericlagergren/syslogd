@@ -1,0 +1,16 @@
+[Unit]
+Description=syslogd
+After=network.target network-online.target
+Requires=network-online.target
+
+[Service]
+Type=notify
+ExecStartPre=/bin/mkdir -p /var/log/syslogd
+ExecStart=/usr/local/bin/syslogd -dir /var/log/syslogd
+TimeoutStopSec=5s
+PrivateTmp=true
+ProtectSystem=full
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target
