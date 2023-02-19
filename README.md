@@ -1,0 +1,2 @@
+# syslogd
+a syslog daemon
